@@ -5,7 +5,7 @@ Projeto de eletrônica de desenvolvimento de uma câmera acoplada em um Raspberr
 _inserir imagem e vídeo_
 
 ## Explicação do programa utilizado
-
+_parte Tiago_
 ## Tabela dos componentes utiliados
 
 | Quantidade  | Componente | Especificações  | Valor em reais |
