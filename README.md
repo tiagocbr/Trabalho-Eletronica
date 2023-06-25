@@ -6,6 +6,16 @@ _inserir imagem e vídeo_
 
 ## Explicação do programa utilizado
 
+## Tabela dos componentes utiliados
+
+| Quantidade  | Componente | Especificações  | Valor em reais |
+| ------------- | ------------- | ------------- | ------------- |
+| 1  | Raspberry Pi  | 4Gb RAM | Emprestada |
+| 1 | Câmera | Ov5647 | Emprestada  |
+| 1  | Relé | 5V | 4,85 |
+| 1  | Resistor | inserir  | 0,07  |
+| 1  | Transistor | NPN BC337 | 0,68  |
+|  |  |  | Total: R$ 5,60 |
 
 ## Membros do grupo:
 * Bruno Kazuya Yamato Sakji
