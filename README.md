@@ -30,7 +30,6 @@ Os valores foram escolhidos de forma a obter o equilíbrio adequado entre sensib
 
 
 
-
 Após sair do loop, a captura de vídeo é liberada e os pinos GPIO são limpos.
 
 ## Tabela dos componentes utiliados
