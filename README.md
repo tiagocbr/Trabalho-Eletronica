@@ -1,5 +1,5 @@
 # Economia_energia
-Projeto de eletrônica de desenvolvimento de uma câmera acoplada em um Raspberry Pi e um relé de arduíno de 5V feito na Universidade de São Paulo. Esse projeto tem a função de fazer o desligamento automático de uma lâmpada de luz após uma pessoa sair de uma determinada sala usando visão computacional programada em Python e utilizando a biblioteca OpenCV no RaspBerry Pi. Utilizamos um dataset pré-treinado em xml. Esse projeto tem objetivo de reduzir o consumo de energia de pessoas que se esquecem de desligar o interruptor ao sair da sala.
+Electronics project for the development of a camera coupled to a Raspberry Pi and a 5V arduino relay made at the University of São Paulo. This project has the function of automatically turning off a light bulb after a person leaves a certain room using computer vision programmed in Python and using the OpenCV library on the RaspBerry Pi. We use a pre-trained xml dataset. This project aims to reduce the energy consumption of people who forget to turn off the switch when leaving the room.
 
 
 _inserir imagem e vídeo_
