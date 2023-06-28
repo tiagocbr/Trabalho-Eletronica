@@ -6,7 +6,9 @@ _inserir imagem e vídeo_
 
 ## Explicação do programa utilizado
 O programa usa a biblioteca OpenCV para processar as imagens e a biblioteca 'RPi.GPIO' para controlar os pinos do Raspberry.
+
 O modo dos pinos GPIO é configurado para o modo BCM, que é um dos esquemas de numeração de pinos suportados pelo Raspberry Pi, e o pino GPIO 18 é configurado como saída, pois será usado para controlar um relé.
+
 O objeto cap representa a câmera padrão do computador.
 
 Definidos esses parâmetros,o código consiste de um loop que captura e processa as imagens frame após frame.
