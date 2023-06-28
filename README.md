@@ -13,13 +13,19 @@ Definidos esses parâmetros,o código consiste de um loop que captura e processa
 Dentro do loop,são executados os seguintes passos para cada frame:
 
 1 - Leitura do frame através da função cap.read().
+
 2 - Conversão da imagem para escala de cinza para melhor funcionamento do algoritmo de detecção de rostos do openCV.
+
 3 - Detecção de rostos: O classificador de cascata de Haar é usado para detectar os rostos na imagem em escala de cinza. A função detectMultiScale retorna as coordenadas dos retângulos delimitadores de cada rosto na forma de uma lista (x, y, w, h), onde (x, y) são as coordenadas do canto superior esquerdo e (w, h) são a largura e a altura do retângulo .
 Nessa função, passamos como parâmetro os valores 1.1 e 4,esses parâmetros se relacionam com as características dos rostos que se deseja detectar.
 Os valores foram escolhidos de forma a obter o equilíbrio adequado entre sensibilidade e precisão na detecção de rostos,também foi considerada a necessidade de desempenho do sistema.
+
 4 - Desenho dos retângulos ao redor dos rostos : A função cv2.rectangle() é usada para desenhar o retângulo, especificando as coordenadas do canto superior esquerdo, as coordenadas do canto inferior direito, a cor (no formato BGR) e a espessura da linha.
+
 5 - Se pelo menos um rosto for detectado, o pino GPIO é definido como nível alto, ativando assim o relé conectado a ele.
+
 6 - A imagem resultante com os retângulos desenhados é exibida na janela 'img'.
+
 7 - Verificação da tecla de saída : Se a tecla 'Esc' for pressionada (código ASCII 27), o loop é interrompido e o programa é encerrado.
 
 
