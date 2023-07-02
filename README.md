@@ -30,7 +30,7 @@ Os valores foram escolhidos de forma a obter o equilíbrio adequado entre sensib
 
 7 - Verificação da tecla de saída : Se a tecla 'Esc' for pressionada (código ASCII 27), o loop é interrompido e o programa é encerrado.
 
-
+## Imagem e vídeo do programa em funcionamento
 
 Após sair do loop, a captura de vídeo é liberada e os pinos GPIO são limpos.
 
