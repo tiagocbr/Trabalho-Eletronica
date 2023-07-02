@@ -34,6 +34,8 @@ Os valores foram escolhidos de forma a obter o equilíbrio adequado entre sensib
 
 Após sair do loop, a captura de vídeo é liberada e os pinos GPIO são limpos.
 
+_NA TEORIA FALTA AINDA O CIRCUITO NO ARDUINO MAS NOSSO PROJETO NAO VAI PRECISAR_
+
 ## Tabela dos componentes utiliados
 
 | Quantidade  | Componente | Especificações  | Valor em reais |
