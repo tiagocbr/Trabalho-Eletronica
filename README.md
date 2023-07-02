@@ -30,9 +30,14 @@ Os valores foram escolhidos de forma a obter o equilíbrio adequado entre sensib
 
 7 - Verificação da tecla de saída : Se a tecla 'Esc' for pressionada (código ASCII 27), o loop é interrompido e o programa é encerrado.
 
+## Explicação da parte eletrônica de transmissão de mensagem para o interruptor
+
+* No projeto, quando o Raspberry Pi manda uma mensagem para os pinos, esses criam uma corrente que sai do pino pelo fio fêmea com 3.3V (padrão do Raspberry). Essa corrente passa por um resistor e, logo após, um transistor é responsável por ligar o relé, com o ground e a Raspberry (no transistor NPN utilizado, esses componente são o emissor, a base e o coletor). Sendo assim, com o acionamento da Raspberry, o relé poderá ser acionado e o interruptor ser ativado, desligando a luz do ambiente.
+
 ## Imagem e vídeo do programa em funcionamento
 
 Após sair do loop, a captura de vídeo é liberada e os pinos GPIO são limpos.
+
 
 _NA TEORIA FALTA AINDA O CIRCUITO NO ARDUINO MAS NOSSO PROJETO NAO VAI PRECISAR_
 
