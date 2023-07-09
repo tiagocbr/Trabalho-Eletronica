@@ -1,5 +1,6 @@
 import cv2
 import RPi.GPIO as GPIO
+import time
 
 # Importa o classificador das faces do dataset
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
@@ -17,6 +18,7 @@ cap = cv2.VideoCapture(0)
 # Variáveis para controle do estado do relé e contador
 relay_state = False
 counter = 0
+delay_duration = 10  # Delay em segundos
 
 # Esse loop serve para capturar os frames do vídeos
 while True: 
@@ -38,10 +40,12 @@ while True:
             relay_state = True
             counter = 0
     else:
-        # Se não houver rostos, desativa o relé e incrementa o contador
+        # Se não houver rostos
         if relay_state:
             counter += 1
             if counter > 10:
+                # Delay de 10 segundos
+                time.sleep(delay_duration)
                 GPIO.output(relay_pin, GPIO.LOW)
                 relay_state = False
 
