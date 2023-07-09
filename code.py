@@ -14,8 +14,9 @@ GPIO.setup(relay_pin, GPIO.OUT)
 # Inicializa a captura de vídeo que abre a câmera padrão do computador
 cap = cv2.VideoCapture(0)
 
-# Variável para controlar o estado do relé
+# Variáveis para controle do estado do relé e contador
 relay_state = False
+counter = 0
 
 # Esse loop serve para capturar os frames do vídeos
 while True: 
@@ -31,15 +32,18 @@ while True:
 
     # Verifica se há rostos detectados
     if len(faces) > 0:
-        # Se houver rostos, ativa o relé
+        # Se houver rostos, ativa o relé e reseta o contador
         if not relay_state:
             GPIO.output(relay_pin, GPIO.HIGH)
             relay_state = True
+            counter = 0
     else:
-        # Se não houver rostos, desativa o relé
+        # Se não houver rostos, desativa o relé e incrementa o contador
         if relay_state:
-            GPIO.output(relay_pin, GPIO.LOW)
-            relay_state = False
+            counter += 1
+            if counter > 10:
+                GPIO.output(relay_pin, GPIO.LOW)
+                relay_state = False
 
     # Desenha o retângulo em volta do rosto por meio de uma iteração
     for (x, y, w, h) in faces:
