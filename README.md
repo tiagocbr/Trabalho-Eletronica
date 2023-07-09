@@ -39,6 +39,8 @@ Link no Youtube: https://youtu.be/zHyO0XfReo8
 
 ## Circuito no Tinker Cad
 
+![alt text](https://github.com/A1RT0N/Economia_energia/blob/main/WhatsApp%20Image%202023-07-09%20at%2019.12.43.jpeg).
+
 ## Tabela dos componentes utiliados
 
 | Quantidade  | Componente | Especificações  | Valor em reais |
