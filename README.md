@@ -33,7 +33,7 @@ Os valores foram escolhidos de forma a obter o equilíbrio adequado entre sensib
 
 ## Imagem e vídeo do programa em funcionamento
 
-[!alt text]https://github.com/A1RT0N/Economia_energia/blob/main/WhatsApp%20Image%202023-07-09%20at%2018.45.07.jpeg
+![alt text](https://github.com/A1RT0N/Economia_energia/blob/main/WhatsApp%20Image%202023-07-09%20at%2018.45.07.jpeg).
 
 Link no Youtube: https://youtu.be/zHyO0XfReo8 
 
