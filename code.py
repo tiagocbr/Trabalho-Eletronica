@@ -6,13 +6,16 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 # Configuração dos pinos da Raspberry Pi
 GPIO.setmode(GPIO.BCM)
-relay_pin = 18  # Exemplo. Falar com Simões.
+relay_pin = 18  # É o pino que é ligado no relé para ser acionado
 
 # Configura o pino do relé como saída
 GPIO.setup(relay_pin, GPIO.OUT)
 
 # Inicializa a captura de vídeo que abre a câmera padrão do computador
 cap = cv2.VideoCapture(0)
+
+# Variável para controlar o estado do relé
+relay_state = False
 
 # Esse loop serve para capturar os frames do vídeos
 while True: 
@@ -26,12 +29,21 @@ while True:
     # Detecta os rostos
     faces = face_cascade.detectMultiScale(gray, 1.1, 4)
 
+    # Verifica se há rostos detectados
+    if len(faces) > 0:
+        # Se houver rostos, ativa o relé
+        if not relay_state:
+            GPIO.output(relay_pin, GPIO.HIGH)
+            relay_state = True
+    else:
+        # Se não houver rostos, desativa o relé
+        if relay_state:
+            GPIO.output(relay_pin, GPIO.LOW)
+            relay_state = False
+
     # Desenha o retângulo em volta do rosto por meio de uma iteração
     for (x, y, w, h) in faces:
         cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
-
-        # Ativa o relé quando o rosto for detectado
-        GPIO.output(relay_pin, GPIO.HIGH)
 
     # Coloca a imagem resultante na janela ´img`
     cv2.imshow('img', img)
