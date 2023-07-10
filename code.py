@@ -8,7 +8,7 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 # Configuração dos pinos da Raspberry Pi
 GPIO.setmode(GPIO.BCM)
 relay_pin = 18  # É o pino que é ligado no relé para ser acionado
-button_pin = 17  # É o pino onde o botão está conectado
+button_pin = 21  # É o pino onde o botão está conectado
 
 # Configura o pino do relé como saída
 GPIO.setup(relay_pin, GPIO.OUT)
