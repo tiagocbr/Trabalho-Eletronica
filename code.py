@@ -8,9 +8,13 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 # Configuração dos pinos da Raspberry Pi
 GPIO.setmode(GPIO.BCM)
 relay_pin = 18  # É o pino que é ligado no relé para ser acionado
+button_pin = 17  # É o pino onde o botão está conectado
 
 # Configura o pino do relé como saída
 GPIO.setup(relay_pin, GPIO.OUT)
+
+# Configura o pino do botão como entrada com resistor pull-up interno
+GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 # Inicializa a captura de vídeo que abre a câmera padrão do computador
 cap = cv2.VideoCapture(0)
@@ -18,8 +22,20 @@ cap = cv2.VideoCapture(0)
 # Variáveis para controle do estado do relé e contador
 relay_state = False
 counter = 0
-delay_duration = 10  # Delay em segundos
 GPIO.output(relay_pin, GPIO.LOW)
+
+# Função de callback para o evento de pressionar o botão
+def button_pressed_callback(channel):
+    global relay_state
+
+    if not relay_state:
+        GPIO.output(relay_pin, GPIO.HIGH)
+        relay_state = True
+        counter = 0
+        
+
+# Registra o callback para o evento de pressionar o botão
+GPIO.add_event_detect(button_pin, GPIO.FALLING, callback=button_pressed_callback, bouncetime=200)
 
 # Esse loop serve para capturar os frames do vídeos
 while True: 
@@ -34,14 +50,7 @@ while True:
     faces = face_cascade.detectMultiScale(gray, 1.1, 4)
 
     # Verifica se há rostos detectados
-    if len(faces) > 0:
-        # Se houver rostos, ativa o relé e reseta o contador
-        if not relay_state:
-            GPIO.output(relay_pin, GPIO.HIGH)
-            relay_state = True
-            counter = 0
-    else:
-        # Se não houver rostos
+    if len(faces) == 0:   
         if relay_state:
             counter += 1
             if counter > 60:
