@@ -19,6 +19,7 @@ cap = cv2.VideoCapture(0)
 relay_state = False
 counter = 0
 delay_duration = 10  # Delay em segundos
+GPIO.output(relay_pin, GPIO.LOW)
 
 # Esse loop serve para capturar os frames do vídeos
 while True: 
@@ -43,9 +44,7 @@ while True:
         # Se não houver rostos
         if relay_state:
             counter += 1
-            if counter > 10:
-                # Delay de 10 segundos
-                time.sleep(delay_duration)
+            if counter > 60:
                 GPIO.output(relay_pin, GPIO.LOW)
                 relay_state = False
 
