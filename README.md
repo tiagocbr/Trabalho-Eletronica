@@ -1,49 +1,44 @@
-# Economia_energia
-Electronics project for the development of a camera coupled to a Raspberry Pi and a 5V arduino relay made at the University of São Paulo. This project has the function of automatically turning off a light bulb after a person leaves a certain room using computer vision programmed in Python and using the OpenCV library on the RaspBerry Pi. We use a pre-trained xml dataset. This project aims to reduce the energy consumption of people who forget to turn off the switch when leaving the room.
+# Energy_Saving
+Electronics project for the development of a camera coupled to a Raspberry Pi and a 5V Arduino relay made at the University of São Paulo. This project aims to automatically turn off a light bulb after a person leaves a certain room using computer vision programmed in Python and the OpenCV library on the Raspberry Pi. We use a pre-trained XML dataset. The goal of this project is to reduce the energy consumption of people who forget to turn off the switch when leaving the room.
 
-## Explicação do programa utilizado
-O programa usa a biblioteca OpenCV para processar as imagens e a biblioteca 'RPi.GPIO' para controlar os pinos do Raspberry.
+## Program Explanation
+The program uses the OpenCV library to process images and the 'RPi.GPIO' library to control the Raspberry Pi pins.
 
-O modo dos pinos GPIO é configurado para o modo BCM, que é um dos esquemas de numeração de pinos suportados pelo Raspberry Pi, e o pino GPIO 18 é configurado como saída, pois será usado para controlar um relé.
+The GPIO pin mode is set to BCM mode, which is one of the pin numbering schemes supported by the Raspberry Pi, and GPIO pin 18 is configured as an output as it will be used to control a relay.
 
-O objeto cap representa a câmera padrão do computador.
+The cap object represents the computer's default camera.
 
-Definidos esses parâmetros,o código consiste de um loop que captura e processa as imagens frame após frame.
-Dentro do loop,são executados os seguintes passos para cada frame:
+With these parameters set, the code consists of a loop that captures and processes the frames one by one. Within the loop, the following steps are executed for each frame:
 
-1 - Leitura do frame através da função cap.read().
+1. Reading the frame using the cap.read() function.
 
-2 - Conversão da imagem para escala de cinza para melhor funcionamento do algoritmo de detecção de rostos do openCV.
+2. Converting the image to grayscale for better operation of the OpenCV face detection algorithm.
 
-3 - Detecção de rostos: O classificador de cascata de Haar é usado para detectar os rostos na imagem em escala de cinza. A função detectMultiScale retorna as coordenadas dos retângulos delimitadores de cada rosto na forma de uma lista (x, y, w, h), onde (x, y) são as coordenadas do canto superior esquerdo e (w, h) são a largura e a altura do retângulo .
-Nessa função, passamos como parâmetro os valores 1.1 e 4,esses parâmetros se relacionam com as características dos rostos que se deseja detectar.
-Os valores foram escolhidos de forma a obter o equilíbrio adequado entre sensibilidade e precisão na detecção de rostos,também foi considerada a necessidade de desempenho do sistema.
+3. Face detection: The Haar cascade classifier is used to detect faces in the grayscale image. The detectMultiScale function returns the coordinates of bounding rectangles for each detected face in the form of a list (x, y, w, h), where (x, y) are the coordinates of the top-left corner, and (w, h) are the width and height of the rectangle. In this function, we pass the parameters 1.1 and 4, which relate to the characteristics of the faces we want to detect. The values were chosen to achieve the proper balance between sensitivity and accuracy in face detection, taking into account the system's performance requirements.
 
-4 - Desenho dos retângulos ao redor dos rostos : A função cv2.rectangle() é usada para desenhar o retângulo, especificando as coordenadas do canto superior esquerdo, as coordenadas do canto inferior direito, a cor (no formato BGR) e a espessura da linha.
+4. Drawing rectangles around the faces: The cv2.rectangle() function is used to draw the rectangle, specifying the coordinates of the top-left corner, the coordinates of the bottom-right corner, the color (in BGR format), and the line thickness.
 
-5 - Se pelo menos um rosto for detectado, o pino GPIO é definido como nível alto, ativando assim o relé conectado a ele.
+5. If at least one face is detected, the GPIO pin is set to a high level, thus activating the relay connected to it.
 
-6 - A imagem resultante com os retângulos desenhados é exibida na janela 'img'.
+6. The resulting image with the drawn rectangles is displayed in the 'img' window.
 
-7 - Verificação da tecla de saída : Se a tecla 'Esc' for pressionada (código ASCII 27), o loop é interrompido e o programa é encerrado.
+7. Checking the exit key: If the 'Esc' key is pressed (ASCII code 27), the loop is interrupted, and the program exits.
 
-## Explicação da parte eletrônica de transmissão de mensagem para o interruptor
+## Explanation of the Electronics Part for Sending Messages to the Switch
+* In the project, when the Raspberry Pi sends a message to the pins, they create a current that exits the pin through the female wire with 3.3V (Raspberry's default). This current passes through a resistor, and then a transistor is responsible for turning on the relay, with the ground and the Raspberry (in the NPN transistor used, these components are the emitter, the base, and the collector). Thus, with the Raspberry's activation, the relay can be triggered, and the switch is activated, turning off the room's light.
 
-* No projeto, quando o Raspberry Pi manda uma mensagem para os pinos, esses criam uma corrente que sai do pino pelo fio fêmea com 3.3V (padrão do Raspberry). Essa corrente passa por um resistor e, logo após, um transistor é responsável por ligar o relé, com o ground e a Raspberry (no transistor NPN utilizado, esses componente são o emissor, a base e o coletor). Sendo assim, com o acionamento da Raspberry, o relé poderá ser acionado e o interruptor ser ativado, desligando a luz do ambiente.
-
-## Imagem e vídeo do programa em funcionamento
-
+## Image and Video of the Program in Action
 ![alt text](https://github.com/A1RT0N/Economia_energia/blob/main/WhatsApp%20Image%202023-07-09%20at%2018.45.07.jpeg).
 
-Link no Youtube: https://youtu.be/zHyO0XfReo8 
+Link Youtube: https://youtu.be/zHyO0XfReo8 
 
 ## Circuito no Tinker Cad
 
 ![alt text](https://github.com/A1RT0N/Economia_energia/blob/main/WhatsApp%20Image%202023-07-09%20at%2019.12.43.jpeg).
 
-## Tabela dos componentes utiliados
+## Table of Used Components
 
-| Quantidade  | Componente | Especificações  | Valor em reais |
+| Quantity  | Component | Specifications  | Value |
 | ------------- | ------------- | ------------- | ------------- |
 | 1  | Raspberry Pi  | 4Gb RAM | Emprestada |
 | 1 | Câmera | Ov5647 | Emprestada  |
@@ -52,7 +47,7 @@ Link no Youtube: https://youtu.be/zHyO0XfReo8
 | 1  | Transistor | NPN BC337 | 0,68  |
 |  |  |  | Total: R$ 5,60 |
 
-## Membros do grupo:
+## Group Members:
 * Bruno Kazuya Yamato Sakji
 * Douglas da Fontoura Pereyra
 * Henrique Vilela Zucoloto
@@ -60,6 +55,6 @@ Link no Youtube: https://youtu.be/zHyO0XfReo8
 * Tiago Chaves Bezerra Rocha
 
 
-## Créditos
-Queremos agradacer ao nosso grande mestre: Eduardo do Valle Simões
+## Credits
+We would like to thank our great mentor: Eduardo do Valle Simões
 
