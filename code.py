@@ -32,6 +32,9 @@ def button_pressed_callback(channel):
         GPIO.output(relay_pin, GPIO.HIGH)
         relay_state = True
         counter = 0
+    else:
+        GPIO.output(relay_pin, GPIO.LOW)
+        relay_state = False
         
 
 # Registra o callback para o evento de pressionar o botão
@@ -56,7 +59,8 @@ while True:
             if counter > 60:
                 GPIO.output(relay_pin, GPIO.LOW)
                 relay_state = False
-
+    else:
+        counter=0
     # Desenha o retângulo em volta do rosto por meio de uma iteração
     for (x, y, w, h) in faces:
         cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
